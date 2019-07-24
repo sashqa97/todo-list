@@ -1,25 +1,24 @@
-function toggleItem(element) {
+function addElement(event) {
+  if (event.charCode === 13) {
+    var newItemText = event.target.value;
+    var newLiElement = document.createElement("LI");
+    var uLElement = document.getElementById("sortable");
 
+    newLiElement.innerHTML =
+      '<div class="checkbox"><label onclick="markDone(this)"><input type="checkbox" value="" />' + newItemText + "</label></div>";
 
-  if (element.className === "done") {
-    element.className = ""; 
-  }  
-  else {
-      element.className = "done";
-  }    
-    
+    uLElement.appendChild(newLiElement);
+  }
 }
 
-function addElement() {
-  var newItemText = document.getElementById("new-item").value;
+function markDone(element) {
+  var liElement = element.parentElement.parentElement;
+  var ulElement = liElement.parentElement;
+  var doneUlElement = document.getElementById("done-items");
 
-  var newItem = document.createElement("LI");
+  var newElement = document.createElement("LI");
+  newElement.innerHTML = liElement.innerText;
 
-  newItem.innerHTML = newItemText;
-
-
-  document.getElementById("todo-list").appendChild(newItem);
-
-
-  console.log(newItemText);
+  ulElement.removeChild(liElement);
+  doneUlElement.appendChild(newElement);
 }

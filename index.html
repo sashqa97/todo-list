@@ -1,30 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Lesson-11</title>
-  <script src="script.js"></script>
-  <link href="./style.css" rel="stylesheet">
-</head>
-<body>
+<html>
+  <head>
+    <title>Todo list example</title>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
 
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="todolist not-done">
+            <h1>Todos</h1>
+            <input type="text" class="form-control add-todo" placeholder="Add todo" onkeypress="addElement(event)" />
+            <button id="checkAll" class="btn btn-success">Mark all as done</button>
 
-<input id="new-item" name="new-item">
-<button id="add-button" onclick="addElement()" >ADD</button>
-<br>
-
-<h1>TODO list!</h1>
-
-<ul id="todo-list">
-<li class="done" onclick="toggleItem(this)" >Buy carots</li>
-<li onclick="toggleItem(this)" >Walk in the park</li>
-
-</ul>
-
-
-
-  
-</body>
+            <hr />
+            <ul id="sortable" class="list-unstyled">
+              <li class="ui-state-default">
+                <div class="checkbox">
+                  <label onclick="markDone(this)"><input type="checkbox" value="" />Take out the trash</label>
+                </div>
+              </li>
+              <li class="ui-state-default">
+                <div class="checkbox">
+                  <label onclick="markDone(this)"><input type="checkbox" value="" />Buy bread</label>
+                </div>
+              </li>
+              <li class="ui-state-default">
+                <div class="checkbox">
+                  <label onclick="markDone(this)"><input type="checkbox" value="" />Teach penguins to fly</label>
+                </div>
+              </li>
+            </ul>
+            <div class="todo-footer">
+              <strong><span class="count-todos">3</span></strong> Items Left
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="todolist">
+            <h1>Already Done</h1>
+            <ul id="done-items" class="list-unstyled">
+              <li>
+                Some item
+                <!-- <button class="remove-item btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-remove"></span></button> -->
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
